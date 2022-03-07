@@ -1,13 +1,19 @@
 import React from 'react';
-const Filters = () => {
+const Filters = ({ setRegion }) => {
   return (
-    <select className="p-2 bg-WhiteT mb-6 dark:bg-DarkBlueT dark:text-WhiteT focus:outline-none shadow-md shadow-DarkGrayTs">
+    <select
+      className="p-2 bg-WhiteT mb-6 dark:bg-DarkBlueT dark:text-WhiteT focus:outline-none shadow-md shadow-DarkGrayTs md:m-0"
+      onChange={(e) => {
+        setRegion(e.target.value);
+      }}
+    >
       <option value="all">Filter by Region</option>
       <option value="all">All</option>
-      <option value="africa">Africa</option>
-      <option value="asia">Asia</option>
-      <option value="europa">Europa</option>
-      <option value="oceania">Oceania</option>
+      <option value="Americas">America</option>
+      <option value="Africa">Africa</option>
+      <option value="Asia">Asia</option>
+      <option value="Europa">Europa</option>
+      <option value="Oceania">Oceania</option>
     </select>
   );
 };
