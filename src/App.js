@@ -10,7 +10,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [countries, setCountries] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [region, setRegion] = useState('all');
+  const [region, setRegion] = useState('');
   const [initialCountries, setInitialCountries] = useState([]);
   useEffect(() => {
     const getAllCountries = async () => {
@@ -23,19 +23,23 @@ function App() {
     getAllCountries();
   }, []);
 
-  // useEffect(() => {
-  //   const getRegionCountries = () => {
-  //     if (initialCountries.length > 0) {
-  //       setIsLoading(true);
-  //       const regionCountries = initialCountries?.filter(
-  //         (country) => country.region === region
-  //       );
-  //       setCountries(regionCountries);
-  //       setIsLoading(false);
-  //     }
-  //   };
-  //   getRegionCountries();
-  // }, [region]);
+  useEffect(() => {
+    const getCountriesByRegion = async () => {
+      if (region !== '') {
+        if (region === 'all') {
+          setIsLoading(true);
+          setCountries(initialCountries);
+          setIsLoading(false);
+          return;
+        }
+        setIsLoading(true);
+        const response = await fetchData(`${API_URL}/region/${region}`);
+        response.data.length > 0 && setCountries(response.data);
+        setIsLoading(false);
+      }
+    };
+    getCountriesByRegion();
+  }, [region]);
 
   return (
     <div

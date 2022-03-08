@@ -10,6 +10,11 @@ const Home = ({
   countries,
   setRegion,
 }) => {
+  const sortCountries = countries.sort((a, b) => {
+    if (a.name.common < b.name.common) return -1;
+    if (a.name.common > b.name.common) return 1;
+    return 0;
+  });
   return (
     <>
       <Header
@@ -21,7 +26,7 @@ const Home = ({
         <Spinner />
       ) : (
         <div className="flex flex-col gap-6 md:flex-row md:justify-evenly flex-wrap">
-          {countries.map((country, index) => (
+          {sortCountries?.map((country, index) => (
             <CountryCard country={country} key={index} />
           ))}
         </div>
