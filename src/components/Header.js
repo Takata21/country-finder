@@ -9,11 +9,22 @@ const Header = ({
   searchTerm,
   setSearchTerm,
   setRegion,
+  countries,
+  setCountries,
+  isLoading,
+  setIsLoading,
 }) => {
   return (
     <header className="w-11/12  mx-auto">
       <div className="md:flex md:justify-between md:items-center">
-        <CountrySearch setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
+        <CountrySearch
+          setSearchTerm={setSearchTerm}
+          searchTerm={searchTerm}
+          countries={countries}
+          setCountries={setCountries}
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+        />
         <Filters setRegion={setRegion} />
       </div>
     </header>

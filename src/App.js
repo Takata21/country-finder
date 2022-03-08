@@ -59,9 +59,12 @@ function App() {
               <Home
                 searchTerm={searchTerm}
                 setSearchTerm={setSearchTerm}
-                countries={countries}
                 isLoading={isLoading}
+                setIsLoading={setIsLoading}
                 setRegion={setRegion}
+                countries={countries}
+                setCountries={setCountries}
+                initialCountries={initialCountries}
               />
             }
           />

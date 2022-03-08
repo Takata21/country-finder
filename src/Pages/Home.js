@@ -6,9 +6,12 @@ import Spinner from '../components/Spinner';
 const Home = ({
   setSearchTerm,
   searchTerm,
-  isLoading,
   countries,
   setRegion,
+  setCountries,
+  initialCountries,
+  isLoading,
+  setIsLoading,
 }) => {
   const sortCountries = countries.sort((a, b) => {
     if (a.name.common < b.name.common) return -1;
@@ -21,6 +24,11 @@ const Home = ({
         setSearchTerm={setSearchTerm}
         searchTerm={searchTerm}
         setRegion={setRegion}
+        countries={countries}
+        setCountries={setCountries}
+        initialCountries={initialCountries}
+        isLoading={isLoading}
+        setIsLoading={setIsLoading}
       />
       {isLoading ? (
         <Spinner />
