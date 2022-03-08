@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HiOutlineArrowNarrowLeft } from 'react-icons/hi';
 import { useParams } from 'react-router-dom';
-import { API_URL, fetchData } from '../Api/FetchData';
+import { API_URL_V2, fetchData } from '../Api/FetchData';
 import Spinner from '../components/Spinner';
 const Country = () => {
   const params = useParams();
@@ -11,7 +11,7 @@ const Country = () => {
   useEffect(() => {
     const getCountry = async () => {
       setIsLoading(true);
-      const response = await fetchData(`${API_URL}/alpha/${params.alpha}`);
+      const response = await fetchData(`${API_URL_V2}/alpha/${params.alpha}`);
       setCountry(response.data);
       setIsLoading(false);
     };
@@ -73,7 +73,7 @@ const Country = () => {
                       Currencies:{' '}
                       <span className="font-normal">
                         {' '}
-                        {country?.currencies[0].name}
+                        {country.currencies[0]?.name}
                       </span>
                     </p>
                     <div className="flex items-center gap-2 font-bold my-1">

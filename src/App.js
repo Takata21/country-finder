@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Navbar from './components/Navbar';
 import Country from './Pages/Country';
 import Home from './Pages/Home';
-import { fetchData, API_URL } from '../src/Api/FetchData';
+import { fetchData, API_URL_V3 } from '../src/Api/FetchData';
 function App() {
   const [darMode, setDarMode] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     const getAllCountries = async () => {
       setIsLoading(true);
-      const response = await fetchData(`${API_URL}/all`);
+      const response = await fetchData(`${API_URL_V3}/all`);
       setCountries(response.data);
       setInitialCountries(response.data);
       setIsLoading(false);
@@ -33,7 +33,7 @@ function App() {
           return;
         }
         setIsLoading(true);
-        const response = await fetchData(`${API_URL}/region/${region}`);
+        const response = await fetchData(`${API_URL_V3}/region/${region}`);
         response.data.length > 0 && setCountries(response.data);
         setIsLoading(false);
       }

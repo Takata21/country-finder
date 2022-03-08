@@ -6,9 +6,9 @@ const CountryCard = ({ country }) => {
       <article className="w-60 m-auto pb-6 shadow-md shadow-DarkGrayTs dark:bg-DarkBlueT dark:text-WhiteT hover:  hover:shadow-DarkGrayT transition-all duration-500 rounded overflow-hidden">
         <img
           src={country.flags[0]}
-          alt=""
+          alt={`flag of ${country.name.common}`}
           className=" w-full h-32 xl:h-40 object-cover"
-          // loading="lazy"
+          loading="lazy"
         />
         <div className="pl-3">
           <p className="capitalize my-4 font-bold xl:my-5">
